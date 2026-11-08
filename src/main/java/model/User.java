@@ -58,11 +58,11 @@ public class User {
 
     //Relacionamento com as ocorrências abertas pelos moradores
     @OneToMany(mappedBy = "morador", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<Ocorrencia> ocorrencias
+    private List<Ocorrencia> ocorrencias;
 
     //data e hora de criação
     @CreationTimestamp
-    @Column(nullable = false, updatable = false);
+    @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     //data e hora de atualização

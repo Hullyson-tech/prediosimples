@@ -6,6 +6,7 @@ import com.condominio.gestao_condominio.repository.UserLogRepository;
 import com.condominio.gestao_condominio.repository.UserRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -80,7 +81,7 @@ public class UserController {
     }
 
     //Aprovar ou rejeitar acesso do usuário(apenas role sindico o suporte)
-    @GetMapping("/{id}aprovar")
+    @GetMapping("/{id}/aprovar")
     public User alterarStatusAprovacao(
             @PathVariable Long id,
             @RequestParam String roleQuemExecuta,
@@ -131,7 +132,7 @@ public class UserController {
 
     //Endpoint de login para validar credenciais
     @PostMapping("/login")
-    public ResponseEntity> login(@RequestBody Map<String, String> credenciais) {
+    public <ResponseEntity> login(@RequestBody Map<String, String> credenciais) {
         String login = credenciais.get("login");
         String senha = credenciais.get("password");
 
