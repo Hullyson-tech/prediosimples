@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import com.condominio.gestao_condominio.model.User;
 
 import java.time.LocalDateTime;
 
@@ -32,11 +33,11 @@ public class Ocorrencia {
 
     //status: aberto, em andamento, concluido
     @Column(nullable = false)
-    private String status = "ABERTO"; // ABERTO, EM_ANDAMENTO, RESOLVIDO
+    private String status = "ABERTO"; // ABERTO, EM_ANDAMENTO, CONCLUIDO
 
     // Relacionamento ManyToOne: Muitas ocorrencias pertencem a um morador
     @ManyToOne(fetch = FetchType.LAZY)
-    @joinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     private User morador;
 
     @CreationTimestamp

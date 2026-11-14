@@ -36,7 +36,7 @@ public class OcorrenciaController {
             throw new RuntimeException("Acesso negado: apenas o Síndico pode consultar o histórico de um morador.");
         }
 
-        return ocorrenciaRepository.findByIdMorador(idMorador);
+        return ocorrenciaRepository.findByMoradorId(idMorador);
     }
 
     //abrir uma nova ocorrencia (apenas morador aprovado)
@@ -59,7 +59,7 @@ public class OcorrenciaController {
         }
 
         // associar o objeto User (morador) à ocorrência
-        ocorrencia.setMorador(idMorador);
+        ocorrencia.setMorador(morador);
         ocorrencia.setStatus("ABERTO");
         return ocorrenciaRepository.save(ocorrencia);
     }

@@ -10,5 +10,5 @@ import java.util.List;
 public interface OcorrenciaRepository extends JpaRepository<Ocorrencia, Long> {
 
     //buscar ocorrencias filtrando o id do usuario morador associado
-    List<Ocorrencia> findByIdMorador(Long idMorador);
+    List<Ocorrencia> findByMoradorId(Long idMorador);
 }

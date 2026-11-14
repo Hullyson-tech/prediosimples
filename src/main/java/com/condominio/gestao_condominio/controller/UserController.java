@@ -4,9 +4,10 @@ import com.condominio.gestao_condominio.model.User;
 import com.condominio.gestao_condominio.model.UserLog;
 import com.condominio.gestao_condominio.repository.UserLogRepository;
 import com.condominio.gestao_condominio.repository.UserRepository;
+import com.condominio.gestao_condominio.service.EmailService;
+import com.condominio.gestao_condominio.service.SmsService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -132,7 +133,7 @@ public class UserController {
 
     //Endpoint de login para validar credenciais
     @PostMapping("/login")
-    public <ResponseEntity> login(@RequestBody Map<String, String> credenciais) {
+    public ResponseEntity<Map<String, Object>> login(@RequestBody Map<String, String> credenciais) {
         String login = credenciais.get("login");
         String senha = credenciais.get("password");
 
